@@ -33,7 +33,7 @@ jobs:
       env:
           INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
       with:
-          text: A successful scrape!
+          text: Hiiiiiii ;)
             
     - name: Slack Notification on FAILURE
       if: failure()
