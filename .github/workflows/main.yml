@@ -25,3 +25,34 @@ jobs:
         committer_name: Automated
         committer_email: actions@users.noreply.github.com
         message: "Latest data"
+
+
+    - name: Slack Notification on SUCCESS
+      if: success()
+      uses: tokorom/action-slack-incoming-webhook@main
+      env:
+          INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      with:
+          text: A successful scrape!
+            
+    - name: Slack Notification on FAILURE
+      if: failure()
+      uses: tokorom/action-slack-incoming-webhook@main
+      env:
+          INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      with:
+          text: Something went wrong.
+          attachments: |
+          [
+              {
+              "color": "bad",
+              "author_name": "${{ github.actor }}",
+              "author_icon": "${{ github.event.sender.avatar_url }}",
+              "fields": [
+                  {
+                  "title": "GitHub Actions URL",
+                  "value": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+                  }
+              ]
+              }
+          ]
