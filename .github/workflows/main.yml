@@ -43,16 +43,16 @@ jobs:
       with:
           text: Something went wrong.
           attachments: |
-          [
-              {
-              "color": "bad",
-              "author_name": "${{ github.actor }}",
-              "author_icon": "${{ github.event.sender.avatar_url }}",
-              "fields": [
-                  {
-                  "title": "GitHub Actions URL",
-                  "value": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
-                  }
-              ]
-              }
-          ] 
+            [
+                {
+                "color": "bad",
+                "author_name": "${{ github.actor }}",
+                "author_icon": "${{ github.event.sender.avatar_url }}",
+                "fields": [
+                    {
+                    "title": "GitHub Actions URL",
+                    "value": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+                    }
+                ]
+                }
+            ] 
